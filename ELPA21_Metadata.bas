@@ -507,13 +507,13 @@ End With
 
 End Sub
 Function unique(aFirstArray) As Variant
-  Dim arr As New Collection, a
+  Dim arr As New Collection, A
   Dim i As Long
   Dim uni_arr() As Variant
 
   On Error Resume Next
-  For Each a In aFirstArray
-     arr.Add a, a
+  For Each A In aFirstArray
+     arr.Add A, A
   Next
 
   For i = 1 To arr.Count

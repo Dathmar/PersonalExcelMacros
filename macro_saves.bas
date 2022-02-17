@@ -16,11 +16,6 @@ save_file = "C:\Users\adanner\OneDrive - Educational Testing Service\Asher\Macro
 
 Call Copy_File_to_Location(save_file, "C:\Users\adanner\OneDrive - Educational Testing Service\Asher\Macro backups\GPM\General_Purpose_Macros_" & save_date & ".xlam")
 
-loc = "\\ETSLAN.ORG\SAO\FS_K12_DATA_03\TestDev\Content Folders\Add-Ins\Excel\General Purpose Macros\General_Purpose_Macros.xlam"
-SetAttr loc, vbNormal
-Call Copy_File_to_Location(save_file, loc)
-SetAttr loc, vbReadOnly
-
 loc = "\\Ets\dfs\FS_SCS_Shared_01\Add-Ins\Excel\General Purpose Macros\General_Purpose_Macros.xlam"
 SetAttr loc, vbNormal
 Call Copy_File_to_Location(save_file, loc)

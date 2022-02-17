@@ -5,7 +5,7 @@ Dim to_wb As Workbook
 Set wb = ActiveWorkbook
 Application.DisplayAlerts = False
 For Each sht In wb.Sheets
-    If IsNumeric(gpm.left_before(sht.Name, "-")) Then
+    If IsNumeric(GPM.left_before(sht.Name, "-")) Then
         Application.Workbooks.Add
         Set to_wb = ActiveWorkbook
         Set del_sht = ActiveWorkbook.Sheets(1)

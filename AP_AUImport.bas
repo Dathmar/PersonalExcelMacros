@@ -1,7 +1,7 @@
 Attribute VB_Name = "AP_AUImport"
 Option Explicit
 Option Base 0
-Private Type au
+Private Type Au
     type As String
     id As String
     test As String
@@ -50,8 +50,8 @@ Dim paste_rng As Range
 Dim lr As Long
 Dim new_lr As Long
 Dim new_au_id As String
-Dim new_au As au
-Dim base_au As au
+Dim new_au As Au
+Dim base_au As Au
 
 Dim form_col As Long
 Dim process_col As Long
@@ -154,7 +154,7 @@ Next sht
 Application.ScreenUpdating = True
 Application.Calculation = xlAutomatic
 End Sub
-Function add_use_codes(start_row As Long, end_row As Long, sht As Worksheet, this_au As au)
+Function add_use_codes(start_row As Long, end_row As Long, sht As Worksheet, this_au As Au)
 Dim usecode As String
 Dim wb As Workbook
 Dim import_sht As Worksheet
@@ -174,7 +174,7 @@ For r = start_row To end_row - 1
 Next
 
 End Function
-Function get_usecode(this_au As au) As String
+Function get_usecode(this_au As Au) As String
 Dim wb As Workbook
 Dim tab_to_test As Worksheet
 Dim use_code_mapping As Worksheet
@@ -266,7 +266,7 @@ If Not delete_rng Is Nothing Then
     delete_rng.EntireRow.Delete
 End If
 End Sub
-Function get_new_au_id(new_au As au) As String
+Function get_new_au_id(new_au As Au) As String
 Dim wb As Workbook
 Dim lookup_sht As Worksheet
 Dim rng As Range
@@ -294,7 +294,7 @@ End If
 lookup_sht.AutoFilterMode = False
 
 End Function
-Function get_new_au_type(base_au As au) As String
+Function get_new_au_type(base_au As Au) As String
 Dim start_char As String
 
 start_char = Left(base_au.type, 1)
@@ -374,12 +374,12 @@ sRange.AutoFilter Field:=1, Criteria1:="=" & au_number
 Call copy_filtered_range_no_headers(lookup_sht, to_rng)
 
 End Function
-Function get_base_au_id_from_lookup_code(test_name As String, lookup_code As String) As au
+Function get_base_au_id_from_lookup_code(test_name As String, lookup_code As String) As Au
 Dim wb As Workbook
 Dim lookup_sht As Worksheet
 Dim rng As Range
 Dim sRange As Range
-Dim au_settings As au
+Dim au_settings As Au
 
 Set wb = ActiveWorkbook
 Set lookup_sht = wb.Sheets("Base AU Metadata")

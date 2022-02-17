@@ -520,20 +520,20 @@ For img_name = LBound(img) To UBound(img)
 Next img_name
 verify_image_sets = LBound(img_arr) + 1
 End Function
-Function check_classifications(class As String, svg_cnt As Integer) As Boolean
+Function check_classifications(Class As String, svg_cnt As Integer) As Boolean
 Dim classifications As String
 
 check_classifications = False
 
-If class = vbNullString And svg_cnt = 0 Then
+If Class = vbNullString And svg_cnt = 0 Then
     check_classifications = True
     Exit Function
 End If
 
-classifications = Replace(class, "[1]", "")
+classifications = Replace(Class, "[1]", "")
 classifications = Replace(classifications, "[2]", "")
 classifications = Replace(classifications, "[3]", "")
-If svg_cnt - ((Len(class) - Len(classifications)) / 3) = 0 Then
+If svg_cnt - ((Len(Class) - Len(classifications)) / 3) = 0 Then
     check_classifications = True
 End If
 End Function

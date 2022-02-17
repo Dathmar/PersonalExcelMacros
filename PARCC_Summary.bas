@@ -326,11 +326,11 @@ For n = 2 To sht.UsedRange.Rows.Count
     If sht.Cells(n, col) <> "" And (exclude = "" Or InStr(sht.Cells(n, col_ex), exclude) = 0) Then
         If vals <> "" Then
             cur_val = Split(sht.Cells(n, col), " ")
-            For F = LBound(cur_val) To UBound(cur_val)
-                If InStr(vals, Trim(cur_val(F))) = 0 Then
-                    vals = vals & " " & Trim(cur_val(F))
+            For f = LBound(cur_val) To UBound(cur_val)
+                If InStr(vals, Trim(cur_val(f))) = 0 Then
+                    vals = vals & " " & Trim(cur_val(f))
                 End If
-            Next F
+            Next f
         Else
             vals = sht.Cells(n, col)
         End If

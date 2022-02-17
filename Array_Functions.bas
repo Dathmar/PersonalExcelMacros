@@ -643,7 +643,7 @@ ReverseArrayInPlace2 = True
 End Function
 
 
-Public Function IsSimpleNumericType(V As Variant) As Boolean
+Public Function IsSimpleNumericType(v As Variant) As Boolean
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' IsSimpleNumericType
 ' This returns TRUE if V is one of the following data types:
@@ -660,8 +660,8 @@ Public Function IsSimpleNumericType(V As Variant) As Boolean
 ' It returns FALSE for any other data type, including any array
 ' or vbEmpty.
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-If IsSimpleDataType(V) = True Then
-    Select Case VarType(V)
+If IsSimpleDataType(v) = True Then
+    Select Case VarType(v)
         Case vbBoolean, _
                 vbByte, _
                 vbCurrency, _
@@ -673,7 +673,7 @@ If IsSimpleDataType(V) = True Then
                 vbSingle
             IsSimpleNumericType = True
         Case vbVariant
-            If IsNumeric(V) = True Then
+            If IsNumeric(v) = True Then
                 IsSimpleNumericType = True
             Else
                 IsSimpleNumericType = False
@@ -686,7 +686,7 @@ Else
 End If
 End Function
 
-Public Function IsSimpleDataType(V As Variant) As Boolean
+Public Function IsSimpleDataType(v As Variant) As Boolean
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' IsSimpleDataType
 ' This function returns TRUE if V is one of the following
@@ -722,7 +722,7 @@ On Error Resume Next
 ' of array element). E.g, the VarType of an Array of Longs is
 ' 8195 = vbArray + vbLong.
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-If IsArray(V) = True Then
+If IsArray(v) = True Then
     IsSimpleDataType = False
     Exit Function
 End If
@@ -738,14 +738,14 @@ End If
 ' prevent this type of behavior with default properties, we test
 ' IsObject(V) to see if V is an object.
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-If IsObject(V) = True Then
+If IsObject(v) = True Then
     IsSimpleDataType = False
     Exit Function
 End If
 '''''''''''''''''''''''''''''''''''''
 ' Test the value returned by VarType.
 '''''''''''''''''''''''''''''''''''''
-Select Case VarType(V)
+Select Case VarType(v)
     Case vbArray, vbDataObject, vbObject, vbUserDefinedType
         '''''''''''''''''''''''
         ' not simple data types

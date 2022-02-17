@@ -50,7 +50,7 @@ Dim FSO As Object
 Dim path As String
 Set FSO = CreateObject("scripting.filesystemobject")
 
-path = Replace(to_file, gpm.get_filename(to_file), "")
+path = Replace(to_file, GPM.get_filename(to_file), "")
 
 If Len(Dir(path, vbDirectory)) = 0 Then
     MkDir Trim(path)

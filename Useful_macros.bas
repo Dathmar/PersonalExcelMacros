@@ -359,7 +359,7 @@ For this_workbook = 2 To list.UsedRange.Rows.Count ' iterate through each book
     If Application.WorksheetFunction.CountA(.Cells) <> 0 Then ' only do this if the sheet is not empty
         If .FilterMode Then .ShowAllData
         
-        Call gpm.delete_extraneous_blank_rows_and_columns(from_book.Sheets(1))
+        Call GPM.delete_extraneous_blank_rows_and_columns(from_book.Sheets(1))
         from_book_rows = .UsedRange.Rows.Count
         If to_sht.UsedRange.Rows.Count + from_book_rows > to_sht.Rows.Count Then
             wb.Sheets.Add after:=to_sht
@@ -538,8 +538,8 @@ match_col = 1 ' column that contains the filter criteria in match_sht
 
 Application.ScreenUpdating = False
 
-Call gpm.delete_extraneous_blank_rows_and_columns(match_sht)
-Call gpm.delete_extraneous_blank_rows_and_columns(lookup_sht)
+Call GPM.delete_extraneous_blank_rows_and_columns(match_sht)
+Call GPM.delete_extraneous_blank_rows_and_columns(lookup_sht)
 
 last_col = match_sht.UsedRange.Columns.Count + 1
 
@@ -648,9 +648,9 @@ to_last_col = to_sht.Cells(1, to_sht.Columns.Count).End(xlToLeft).Column + 1
 
 For n = to_sht.Cells(to_sht.Rows.Count, 1).End(xlUp).Row To 2 Step -1
     from_sht.UsedRange.AutoFilter Field:=from_lookup_col, Criteria1:=to_sht.Cells(n, to_match_col)
-    copy_rows = gpm.count_rows_in_range(from_sht.UsedRange.SpecialCells(xlCellTypeVisible)) - 1
+    copy_rows = GPM.count_rows_in_range(from_sht.UsedRange.SpecialCells(xlCellTypeVisible)) - 1
     
-    Run gpm.copy_row_n_times(to_sht, copy_rows, n)
+    Run GPM.copy_row_n_times(to_sht, copy_rows, n)
     from_sht.UsedRange.Copy Destination:=to_sht.Cells(n, to_last_col)
     to_sht.Rows(n).EntireRow.Delete
 Next n
